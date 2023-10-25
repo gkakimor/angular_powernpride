@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TopicModel } from '../topic-response';
 import { TopicService } from '../topic.service';
 import { throwError } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { faComments } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list-topics',
@@ -11,13 +13,32 @@ import { throwError } from 'rxjs';
 export class ListTopicsComponent implements OnInit {
 
   topics: Array<TopicModel>;
-  constructor(private topicService: TopicService) { }
+  name: string;
+  faComments = faComments;
+
+  constructor(private activatedRoute: ActivatedRoute, private topicService: TopicService) {
+    this.name = this.activatedRoute.snapshot.params['name'];
+  }
 
   ngOnInit() {
-    this.topicService.getAllTopics().subscribe(data => {
-      this.topics = data;
-    }, error => {
-      throwError(error);
-    })
+    if (this.name === undefined)
+    {
+      this.topicService.getAllTopics().subscribe(data => {
+        this.topics = data;
+      }, error => {
+        throwError(error);
+      });
+      console.log("Name is undefined ");
+    }
+    else
+      this.searchTopic();
+
   }
+
+  searchTopic(){
+    this.topicService.getTopicsByTopicName(this.name).subscribe(topic => {
+      this.topics = topic;
+    });
+  }
+
 }

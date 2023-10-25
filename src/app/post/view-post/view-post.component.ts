@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { throwError } from 'rxjs';
+import { AuthService } from 'src/app/auth/shared/auth.service';
 import { CommentPayload } from 'src/app/comment/comment.payload';
 import { CommentService } from 'src/app/comment/comment.service';
 import { PostModel } from 'src/app/shared/post-model';
@@ -19,9 +20,10 @@ export class ViewPostComponent implements OnInit {
   commentForm: FormGroup;
   commentPayload: CommentPayload;
   comments: CommentPayload[];
+  userName: string;
 
   constructor(private postService: PostService, private activateRoute: ActivatedRoute,
-    private commentService: CommentService, private router: Router) {
+    private commentService: CommentService, private router: Router, private authService: AuthService) {
     this.postId = this.activateRoute.snapshot.params['id'];
 
     this.commentForm = new FormGroup({
@@ -37,6 +39,7 @@ export class ViewPostComponent implements OnInit {
   ngOnInit(): void {
     this.getPostById();
     this.getCommentsForPost();
+    this.userName = this.authService.getUserName();
   }
 
   postComment() {

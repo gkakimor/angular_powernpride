@@ -3,11 +3,14 @@
     <div class="row">
       <hr />
     <!-- Search form -->
-    <form class="form-inline d-flex justify-content-center md-form form-sm active-purple active-purple-2 mt-2">
-      <fa-icon class="fas fa-search" aria-hidden="true" [icon]="faSearch" ></fa-icon>
+    <form class="form-inline d-flex justify-content-center md-form form-sm active-purple active-purple-2 mt-2"
+      [formGroup]="searchTopicForm" (ngSubmit)="goToSearchTopic()">
+      <button class="btnSearchTopic btn btn-primary"><fa-icon class="fas fa-search" aria-hidden="true" [icon]="faSearch"></fa-icon></button>
       <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search Topic"
-        aria-label="Search">
+        aria-label="Search" [formControlName]="'topicName'">
     </form>
+    <br>
+
       <div class="col-md-9">
         <app-post-tile [posts]="posts"></app-post-tile>
       </div>

@@ -19,8 +19,11 @@
           <a routerLink="post.url" class="post-title">{{post.postName}}</a>
           <div>
             <p class="post-text" [innerHtml]="post.description"></p>
+            <br>
           </div>
+          <hr />
           <div class="post-comment">
+            <p>Comment as <a class="username" href="">{{userName}}</a></p>
             <form [formGroup]="commentForm" (ngSubmit)="postComment()">
               <div class="form-group">
                 <textarea class="form-control" [formControlName]="'text'" placeholder="Your Thoughts?"></textarea>

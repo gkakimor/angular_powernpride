@@ -6,6 +6,7 @@ import { LoginRequestPayload } from '../login/login-request.payload';
 import { LoginResponse } from '../login/login-response.payload';
 import { map, tap } from 'rxjs/operators';
 import { LocalStorageService } from 'ngx-webstorage';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,19 +16,22 @@ export class AuthService {
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string> = new EventEmitter();
 
+  private domain = '';
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken()
     //username: this.getUserName()
   }
 
-  constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) { }
+  constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) {
+    this.domain = environment.apiDomain;
+  }
 
   signup(signupRequestPayload: SignupRequestPayload): Observable<any> {
-    return this.httpClient.post('https://power-n-pride-production.up.railway.app/api/auth/signup', signupRequestPayload, { responseType: 'text' });
+    return this.httpClient.post(this.domain + '/api/auth/signup', signupRequestPayload, { responseType: 'text' });
   }
 
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
-    return this.httpClient.post<LoginResponse>('https://power-n-pride-production.up.railway.app/api/auth/login',
+    return this.httpClient.post<LoginResponse>(this.domain + '/api/auth/login',
       loginRequestPayload).pipe(map(data => {
         this.localStorage.store('access_token', data.access_token);
         this.localStorage.store('username', data.username);
@@ -46,7 +50,7 @@ export class AuthService {
   }
 
   refreshToken() {
-    return this.httpClient.post<LoginResponse>('https://power-n-pride-production.up.railway.app/api/auth/refresh/token',
+    return this.httpClient.post<LoginResponse>(this.domain + '/api/auth/refresh/token',
       this.refreshTokenPayload)
       .pipe(tap(response => {
         this.localStorage.clear('access_token');
@@ -59,7 +63,7 @@ export class AuthService {
   }
 
   logout() {
-    this.httpClient.post('https://power-n-pride-production.up.railway.app/api/auth/logout', this.refreshTokenPayload,
+    this.httpClient.post(this.domain + '/api/auth/logout', this.refreshTokenPayload,
       { responseType: 'text' })
       .subscribe(data => {
         console.log(data);

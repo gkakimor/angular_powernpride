@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'view-post/:id', component: ViewPostComponent },
   { path: 'view-topic/:id', component: ViewTopicComponent },
   { path: 'user-profile/:name', component: UserProfileComponent },
+  { path: 'list-topics/:name', component: ListTopicsComponent },
   { path: 'list-topics', component: ListTopicsComponent },
   { path: 'create-post', component: CreatePostComponent },
   { path: 'create-topic', component: CreateTopicComponent },
