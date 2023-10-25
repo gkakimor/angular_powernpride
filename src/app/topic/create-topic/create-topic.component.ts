@@ -13,7 +13,7 @@ import { throwError } from 'rxjs';
 export class CreateTopicComponent implements OnInit{
 
   createTopicForm: FormGroup;
-  topicModel: TopicModel;
+  topicModel = new TopicModel;
   title = new FormControl('');
   description = new FormControl('');
 
@@ -22,10 +22,7 @@ export class CreateTopicComponent implements OnInit{
       title: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required)
     });
-    this.topicModel = {
-      name: '',
-      description: ''
-    }
+
   }
 
   ngOnInit() {
