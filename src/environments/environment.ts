@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  API: 'http://localhost:8080'
+  production: true,
+  API: 'https://power-n-pride-production.up.railway.app'
 };

@@ -11,14 +11,14 @@ export class CommentService {
   constructor(private httpClient: HttpClient) { }
 
   getAllCommentsForPost(postId: number): Observable<CommentPayload[]> {
-    return this.httpClient.get<CommentPayload[]>('http://localhost:8080/api/comments?postId=' + postId);
+    return this.httpClient.get<CommentPayload[]>('https://power-n-pride-production.up.railway.app/api/comments?postId=' + postId);
   }
 
   postComment(commentPayload: CommentPayload): Observable<any> {
-    return this.httpClient.post('http://localhost:8080/api/comments', commentPayload);
+    return this.httpClient.post('https://power-n-pride-production.up.railway.app/api/comments', commentPayload);
   }
 
   getAllCommentsByUser(name: string) {
-    return this.httpClient.get<CommentPayload[]>('http://localhost:8080/api/comments?userName=' + name);
+    return this.httpClient.get<CommentPayload[]>('https://power-n-pride-production.up.railway.app/api/comments?userName=' + name);
   }
 }
