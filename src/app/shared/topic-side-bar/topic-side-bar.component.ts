@@ -14,7 +14,7 @@ export class TopicSideBarComponent implements OnInit{
   displayViewAll: boolean;
 
 
-  constructor(private topicService : TopicService, private router: Router) {
+  constructor(private topicService : TopicService) {
     this.topicService.getAllTopics().subscribe(data => {
       if (data.length > 5) {
         this.topics = data.splice(0, 5);
@@ -26,9 +26,5 @@ export class TopicSideBarComponent implements OnInit{
   }
 
   ngOnInit(): void { }
-
-  goToTopic(id: number): void {
-    this.router.navigateByUrl('/view-topic/' + id);
-  }
 
 }
