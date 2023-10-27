@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TopicModel } from 'src/app/topic/topic-response';
 import { TopicService } from 'src/app/topic/topic.service';
+
 
 @Component({
   selector: 'app-topic-side-bar',
@@ -13,11 +14,17 @@ export class TopicSideBarComponent implements OnInit{
   topics: Array<TopicModel> = [];
   displayViewAll: boolean;
 
+  constructor(private topicService : TopicService, private router: Router) {
+  }
 
-  constructor(private topicService : TopicService) {
-    this.topicService.getAllTopics().subscribe(data => {
+  ngOnInit(): void {
+    this.fetchTopics();
+  }
+
+  private fetchTopics() {
+    this.topicService.getAllTopics().subscribe((data) => {
       if (data.length > 5) {
-        this.topics = data.splice(0, 5);
+        this.topics = data.slice(0, 5); // Use slice to create a new array
         this.displayViewAll = true;
       } else {
         this.topics = data;
@@ -25,6 +32,8 @@ export class TopicSideBarComponent implements OnInit{
     });
   }
 
-  ngOnInit(): void { }
+  goToTopic(id: number): void {
+    this.router.navigateByUrl('/view-topic/' + id);
+  }
 
 }
