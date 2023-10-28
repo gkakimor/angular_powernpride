@@ -26,6 +26,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { TokenInterceptor } from './token-interceptor';
 import { ViewTopicComponent } from './topic/view-topic/view-topic.component';
+import { SearchComponent } from './shared/search/search.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { ViewTopicComponent } from './topic/view-topic/view-topic.component';
     ListTopicsComponent,
     ViewPostComponent,
     UserProfileComponent,
-    ViewTopicComponent
+    ViewTopicComponent,
+    SearchComponent,
+    MainpageComponent
   ],
   imports: [
     BrowserModule,

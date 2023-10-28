@@ -9,9 +9,11 @@ import { ListTopicsComponent } from './topic/list-topics/list-topics.component';
 import { ViewPostComponent } from './post/view-post/view-post.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { ViewTopicComponent } from './topic/view-topic/view-topic.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: MainpageComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'view-post/:id', component: ViewPostComponent },
   { path: 'view-topic/:id', component: ViewTopicComponent },
   { path: 'user-profile/:name', component: UserProfileComponent },
