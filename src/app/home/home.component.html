@@ -1,15 +1,13 @@
 <div class="reddit-body">
-  <div class="container">
+  <div class="container" *ngIf="isLoggedIn">
     <div class="row">
       <hr />
-      <app-search></app-search>
+        <app-search></app-search>
       <div class="col-md-9">
         <app-post-tile [posts]="posts"></app-post-tile>
       </div>
       <div class="col-md-3">
-        <div *ngIf="isLoggedIn">
           <app-side-bar></app-side-bar>
-        </div>
         <app-topic-side-bar></app-topic-side-bar>
       </div>
     </div>

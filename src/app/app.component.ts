@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-power-n-pride';
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any): void {
+    // Clear session storage on page unload
+    sessionStorage.removeItem('isLoggedIn');
+  }
 }

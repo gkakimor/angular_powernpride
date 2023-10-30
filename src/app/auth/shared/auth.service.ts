@@ -40,6 +40,7 @@ export class AuthService {
 
         this.loggedIn.emit(true);
         this.username.emit(data.username);
+        sessionStorage.setItem('isLoggedIn', 'true');
 
         return true;
       }));
@@ -74,6 +75,7 @@ export class AuthService {
     this.localStorage.clear('username');
     this.localStorage.clear('refresh_token');
     this.localStorage.clear('expiresAt');
+    sessionStorage.setItem('isLoggedIn', 'false');
   }
 
   getUserName() {
@@ -85,6 +87,13 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return this.getJwtToken() != null;
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    if (isLoggedIn == null) {
+      console.log('isLoggedIn: ' + isLoggedIn);
+      return false;
+    } else {
+      console.log('isLoggedIn: ' + isLoggedIn + " jwt: " + this.getJwtToken());
+      return this.getJwtToken() != null;
+    }
   }
 }

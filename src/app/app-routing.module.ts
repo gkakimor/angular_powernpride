@@ -12,7 +12,8 @@ import { ViewTopicComponent } from './topic/view-topic/view-topic.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 
 const routes: Routes = [
-  { path: '', component: MainpageComponent },
+  //{ path: '', component: MainpageComponent },
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'view-post/:id', component: ViewPostComponent },
   { path: 'view-topic/:id', component: ViewTopicComponent },
