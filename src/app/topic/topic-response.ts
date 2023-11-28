@@ -3,4 +3,5 @@ export class TopicModel {
   name: string;
   description: string;
   numberOfPosts?: number;
+  numberOfComments: number;
 }

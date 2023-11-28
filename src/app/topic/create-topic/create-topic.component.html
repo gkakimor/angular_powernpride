@@ -1,7 +1,5 @@
 <div class="container">
   <div class="row">
-    <hr />
-    <app-search></app-search>
     <div class="create-topic-container col-md-9">
       <form class="post-form" [formGroup]="createTopicForm" (ngSubmit)="createTopic()">
         <div class="form-group">
@@ -9,12 +7,12 @@
           <hr />
           <input type="text" [formControlName]="'title'" class="form-control" style="margin-top: 5px"
             placeholder="Title">
-          <textarea type="text" [formControlName]="'description'" style="width: 100%; margin-top: 5px"
+          <textarea class="form-control" rows="4" type="text" [formControlName]="'description'" style="width: 100%; margin-top: 5px"
             placeholder="Description"></textarea>
           <div>
             <div style="margin-top: 5px" class="float-right">
-              <button (click)="discard()" class="btnDiscard">Discard</button>
-              <button class="btnCreateTopic">Create</button>
+              <button (click)="discard()" class="btn btn-outline-primary m-2">Discard</button>
+              <button class="btn btn-primary m-2">Create</button>
             </div>
           </div>
         </div>

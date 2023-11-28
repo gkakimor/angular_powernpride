@@ -3,7 +3,7 @@ import { TopicModel } from '../topic-response';
 import { TopicService } from '../topic.service';
 import { throwError } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
-import { faComments } from '@fortawesome/free-solid-svg-icons';
+import { faComments, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,6 +16,7 @@ export class ListTopicsComponent implements OnInit {
   topics: Array<TopicModel>;
   name: string;
   faComments = faComments;
+  faPenToSquare = faPenToSquare;
   userSubscription: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private topicService: TopicService) {

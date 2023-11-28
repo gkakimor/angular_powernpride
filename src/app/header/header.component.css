@@ -16,6 +16,11 @@ header{
   text-decoration: none;
 }
 
+.logo img {
+  width: 100px;
+  height: auto;
+}
+
 .login, .sign-up{
   background-color: transparent;
   border-color: #0079D3;
@@ -95,4 +100,8 @@ header{
   margin-right: 5px;
   max-height: 24px;
   max-width: 24px;
+}
+
+.search-btn {
+  padding-left: 10px;
 }

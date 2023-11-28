@@ -1,7 +1,5 @@
-<div class="container">
+<!-- <div class="container">
   <div class="row">
-    <hr />
-    <app-search></app-search>
     <div class="col-md-9">
       <div class="row post">
         <div class="col-md-1">
@@ -29,10 +27,10 @@
               <div class="form-group">
                 <textarea class="form-control" [formControlName]="'text'" placeholder="Your Thoughts?"></textarea>
               </div>
-              <button type="submit" class="login float-right">Comment</button>
+              <button type="submit" class="login float-right btn btn-primary">Comment</button>
             </form>
           </div>
-          <div style="margin-top: 60px;" *ngFor="let comment of comments">
+          <div style="margin-top: 60px; background-color:red" *ngFor="let comment of comments">
             <div class="comment">
               <div class="username">
                 <a routerLink="/user/comment.username">{{comment.userName}}</a>
@@ -47,6 +45,78 @@
         </div>
       </div>
     </div>
+    <div class="col-md-3">
+      <app-side-bar></app-side-bar>
+      <app-topic-side-bar></app-topic-side-bar>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row post">
+        <div class="col-md-1">
+          <app-vote-button [post]="post" [postId]="post.id"></app-vote-button>
+        </div>
+        <div class="col-md-11">
+          <span>
+            <span class="topic-text"><a class="post-url" routerLink="/view-topic/{{post.topicId}}">{{post.topicName}}</a></span>
+            <span> . Posted
+              <span> {{post.duration}} </span>
+              by
+              <a class="username" routerLink="/user-profile/{{post.userName}}">{{post.userName}}</a>
+            </span>
+          </span>
+          <hr />
+          <a routerLink="post.url" class="post-title">{{post.postName}}</a>
+          <div>
+            <p class="post-text" [innerHtml]="post.description"></p>
+            <br>
+          </div>
+          <br>
+          <div class="card border-0">
+            <div class="post-comment card-body " style="background-color: #f8f9fa;">
+              <p>Comment as <a class="username" routerLink="/user-profile/{{post.userName}}">{{userName}}</a></p>
+              <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+                <div class="form-group">
+                  <textarea class="form-control" [formControlName]="'text'" placeholder="Your Thoughts?"
+                    rows="4"></textarea>
+                </div>
+                <button type="submit" class="login float-right btn btn-primary">Comment</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="container my-4 py-4 ">
+            <div class="row d-flex justify-content-center">
+              <div>
+                <div class="card text-dark">
+                  <div class="card-body p-4">
+                    <h4 class="mb-0">All comments</h4>
+                  </div>
+                  <div *ngFor="let comment of comments">
+                    <div class="card-body p-4">
+                      <div class="d-flex flex-start">
+                        <div>
+                          <h6 class="fw-bold mb-1"><a routerLink="/user/comment.username">{{comment.userName}}</a></h6>
+                          <div class="d-flex align-items-center mb-3">
+                            <p class="mb-0">{{comment.createdDate}}</p>
+                          </div>
+                          <p class="mb-0">{{comment.text}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="my-0" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="col-md-3">
       <app-side-bar></app-side-bar>
       <app-topic-side-bar></app-topic-side-bar>

@@ -17,8 +17,6 @@
 
 <div class="container">
   <div class="row">
-    <hr />
-    <app-search></app-search>
     <div class="col-md-9">
       <div class="row post" *ngFor="let topic of topics">
         <!-- Section to Display Post Information-->
@@ -33,8 +31,13 @@
           <br>
           <span>
             <p class="btnCommments">
-              <fa-icon [icon]="faComments"></fa-icon>
-              {{topic.numberOfPosts}} Posts
+              <span>
+                <fa-icon [icon]="faPenToSquare"></fa-icon> {{topic.numberOfPosts}} Posts
+              </span>
+              &nbsp; &nbsp; &nbsp;
+              <span><fa-icon [icon]="faComments"></fa-icon>
+                {{topic.numberOfComments}} Comments </span>
+
             </p>
             <!-- <button class="login" (click)="goToPost(post.id)">
               Read Post

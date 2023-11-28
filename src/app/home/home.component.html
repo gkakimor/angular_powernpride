@@ -1,15 +1,74 @@
 <div class="reddit-body">
+
   <div class="container" *ngIf="isLoggedIn">
     <div class="row">
-      <hr />
-        <app-search></app-search>
       <div class="col-md-9">
         <app-post-tile [posts]="posts"></app-post-tile>
       </div>
       <div class="col-md-3">
-          <app-side-bar></app-side-bar>
+        <app-side-bar></app-side-bar>
         <app-topic-side-bar></app-topic-side-bar>
       </div>
     </div>
   </div>
+
+  <br />
+  <br />
+  <!-- WHEN NOT LOGGED IN-->
+  <div class="container" *ngIf="!isLoggedIn">
+    <mdb-carousel [controls]="true" [indicators]="true" [animation]="'fade'">
+      <mdb-carousel-item>
+        <img src="../../assets/carrossel_01.jpg" class="d-block w-100"/>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img src="../../assets/carrossel_02.jpg" class="d-block w-100"/>
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img src="../../assets/carrossel_03.jpg" class="d-block w-100" />
+      </mdb-carousel-item>
+    </mdb-carousel>
+    <br> <br>
+
+    <h2> What's going on in Power N Pride </h2> <br>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">{{dash.numberOfUsers}} Users <fa-icon [icon]="faUser"></fa-icon></h5>
+            <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--> 
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">{{dash.numberOfTopics}} Topics <fa-icon [icon]="faMessage"></fa-icon></h5>
+            <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--> 
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">{{dash.numberOfPosts}} Posts <fa-icon [icon]="faPenToSquare"></fa-icon></h5>
+            <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--> 
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">{{dash.numberOfComments}} Comments <fa-icon [icon]="faComments"></fa-icon></h5>
+            <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>--> 
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <br>
 </div>

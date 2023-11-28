@@ -3,13 +3,13 @@
   <hr />
   <div *ngFor="let topic of topics">
 
-          <a routerLink="/view-topic/{{topic.id}}">
+          <a routerLink="/view-topic/{{topic.id}}" style="text-decoration: none;">
             <div class="topic-text">{{topic.name}}</div>
           </a>
 
   </div>
-  <div class="view-all-container" style="text-align: center" *ngIf="displayViewAll">
-      <a style="font-weight: bold" class="view-all" routerLink="/list-topics">View All</a>
+  <div class="view-all-container" style="text-align: center;" *ngIf="displayViewAll">
+      <a style="font-weight: bold; text-decoration: none;" class="view-all" routerLink="/list-topics">View All</a>
 
 
   </div>

@@ -28,6 +28,10 @@ import { TokenInterceptor } from './token-interceptor';
 import { ViewTopicComponent } from './topic/view-topic/view-topic.component';
 import { SearchComponent } from './shared/search/search.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { FooterComponent } from './footer/footer.component';
+import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
+import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
+ 
 
 @NgModule({
   declarations: [
@@ -47,7 +51,8 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     UserProfileComponent,
     ViewTopicComponent,
     SearchComponent,
-    MainpageComponent
+    MainpageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,9 @@ import { MainpageComponent } from './mainpage/mainpage.component';
     ToastrModule.forRoot(),
     FontAwesomeModule,
     EditorModule,
-    NgbModule
+    NgbModule,
+    MdbCarouselModule,
+    MdbTabsModule
   ],
   providers: [
     {
@@ -71,3 +78,5 @@ import { MainpageComponent } from './mainpage/mainpage.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

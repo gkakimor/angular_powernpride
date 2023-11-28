@@ -4,6 +4,7 @@ import { CommentPayload } from 'src/app/comment/comment.payload';
 import { CommentService } from 'src/app/comment/comment.service';
 import { PostModel } from 'src/app/shared/post-model';
 import { PostService } from 'src/app/shared/post.service';
+import { faComments, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,6 +18,8 @@ export class UserProfileComponent implements OnInit {
   comments: CommentPayload[];
   postLength: number;
   commentLength: number;
+  faComments  = faComments;
+  faPenToSquare = faPenToSquare;
 
   constructor(private activatedRoute: ActivatedRoute,
     private postService: PostService,

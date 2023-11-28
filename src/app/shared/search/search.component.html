@@ -1,11 +1,18 @@
-<!-- Search form -->
+<!-- Search form 
 <div class="search-container">
   <form class="form-inline d-flex justify-content-center md-form form-sm active-purple active-purple-2 mt-2"
   [formGroup]="searchTopicForm" (ngSubmit)="goToSearchTopic()">
-  <button class="btnSearchTopic btn btn-primary"><fa-icon class="fas fa-search" aria-hidden="true" [icon]="faSearch"></fa-icon></button>
+  
   <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search Topic"
     aria-label="Search" [formControlName]="'topicName'">
+    <button class="btnSearchTopic btn btn-primary"><fa-icon class="fas fa-search" aria-hidden="true" [icon]="faSearch"></fa-icon></button>
   </form>
   <br>
-</div>
+</div>-->
 
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline" [formGroup]="searchTopicForm" (ngSubmit)="goToSearchTopic()">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search Topic" aria-label="Search" [formControlName]="'topicName'">
+    <button class="btn btn-primary my-2 my-sm-0" type="submit"><fa-icon class="fas fa-search" aria-hidden="true" [icon]="faSearch"></fa-icon></button>
+  </form>
+</nav>

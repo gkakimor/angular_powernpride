@@ -4,25 +4,25 @@
     <b>{{commentLength}}</b> time(s).
     You can check your post and comment history below.
   </div>
-  <hr />
-  <div>
-    Your Posts:
-  </div>
-  <app-post-tile [posts]="posts"></app-post-tile>
-  <hr />
-  <div>
-    Your Comments:
-  </div>
-  <div *ngFor="let comment of comments">
-    <div class="comment">
-      <div class="username">
-        <a routerLink="/user/comment.username">{{comment.userName}}</a>
+  <br>
+  <mdb-tabs>
+    <mdb-tab>
+      <ng-template mdbTabTitle><span><fa-icon [icon]="faPenToSquare"></fa-icon>&nbsp;&nbsp;Posts</span></ng-template>
+      <app-post-tile [posts]="posts"></app-post-tile>
+    </mdb-tab>
+    <mdb-tab>
+      <ng-template mdbTabTitle><span><fa-icon [icon]="faComments"></fa-icon>&nbsp;&nbsp;Comments</span></ng-template>
+      <div *ngFor="let comment of comments">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">
+              {{comment.userName}} commented on 
+              <a routerLink="//view-post/{{comment.postId}}">{{comment.postName}}</a> {{comment.createdDate}}</h6>
+            <p>{{comment.text}}</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <p>{{comment.createdDate}}</p>
-      </div>
-      <b>{{comment.text}}</b>
-    </div>
-    <hr />
-  </div>
+    </mdb-tab>
+  </mdb-tabs>
+
 </div>
